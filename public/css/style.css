@@ -1,0 +1,28 @@
+.mt-2 {
+    margin-top: 5rem !important;
+}
+.form-product{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.list-group-item .title{
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 1px solid #f3f3f3;
+}
+.list-group-item .description{
+    margin-top: 1rem ;
+    font-size: 10px;
+}
+
+.mt-5 .card-body .title{
+    margin-top: 1rem ;
+    font-weight: bold;
+    color: rgb(0, 123, 255);
+    font-size: 20px;
+    border-bottom: 1px solid #f3f3f3;
+}
