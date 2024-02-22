@@ -21,8 +21,13 @@ Route::get('/', function () {
 
 
 Route::get('accueil', [ArticleController::class,'index']);
-Route::post('articles', [ArticleController::class,'store']);
-Route::get('articles/{id}', [ArticleController::class,'show']);
-Route::get('articles/{article}/edit', [ArticleController::class,'edit']);
-Route::put('articles/{article}/update', [ArticleController::class,'update']);
-Route::delete('articles/{article}/delete', [ArticleController::class,'delete']);
+// utilisation des préfixes
+
+Route::prefix('articles')->group(function (){
+    Route::post('/', [ArticleController::class,'store']);
+    Route::get('/{id}', [ArticleController::class,'show']);
+    Route::get('/{article}/edit', [ArticleController::class,'edit']);
+    Route::put('/{article}/update', [ArticleController::class,'update']);
+    Route::delete('/{article}/delete', [ArticleController::class,'delete']);
+});
+
