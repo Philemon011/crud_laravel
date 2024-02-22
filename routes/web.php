@@ -19,12 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test/{username}', [TestController::class,'methode1']);
-Route::get('example', [TestController::class,'example']);
-Route::get('direBonjour/{nom}', [TestController::class,'bonjour']);
-Route::get('apropos/{nom}', [TestController::class,'afficherApropos']);
-Route::get('ok',[TestController::class,'ok']);
-Route::get('a', [TestController::class,'functA']);
 
 Route::get('accueil', [ArticleController::class,'index']);
 Route::post('articles', [ArticleController::class,'store']);
