@@ -12,6 +12,11 @@ class UserController extends Controller
         return view('users.register');
     }
     public function handleRegistration(User $user ,createUserRequest $request){
-        dd($user);
+        $user->name=$request->nom;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->save();
+
+        return redirect()->route('accueil')->with('success', 'Le compte a été crée avec succès. Connectez-vous ');
     }
 }
