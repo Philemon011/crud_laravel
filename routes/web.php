@@ -24,10 +24,10 @@ Route::get('accueil', [ArticleController::class,'index']);
 // utilisation des préfixes
 
 Route::prefix('articles')->group(function (){
-    Route::post('/', [ArticleController::class,'store']);
-    Route::get('/{id}', [ArticleController::class,'show']);
-    Route::get('/{article}/edit', [ArticleController::class,'edit']);
-    Route::put('/{article}/update', [ArticleController::class,'update']);
-    Route::delete('/{article}/delete', [ArticleController::class,'delete']);
+    Route::post('/', [ArticleController::class,'store'])->name('articles');
+    Route::get('/{id}', [ArticleController::class,'show'])->name('articles.show');
+    Route::get('/{article}/edit', [ArticleController::class,'edit'])->name('articles.edit');;
+    Route::put('/{article}/update', [ArticleController::class,'update'])->name('articles.update');
+    Route::delete('/{article}/delete', [ArticleController::class,'delete'])->name('articles.delete');
 });
 

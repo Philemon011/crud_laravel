@@ -9,9 +9,9 @@
             <p>créé le : {{ $article->created_at}}</p>
         </div>
         <div class="card-footer">
-            <a href="/articles/{{$article->id}}/edit" class="btn btn-info">Editer</a>
+            <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-info">Editer</a>
 
-            <form action="/articles/{{ $article->id }}/delete" method="POST">
+            <form action="{{ route('articles.delete', $article->id) }}" method="POST">
                 @csrf
                 @method('delete')
                 <button class="btn btn-danger" type="submit">Supprimer</button>
