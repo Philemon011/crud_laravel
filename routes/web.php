@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,8 @@ Route::get('/', function () {
 
 Route::get('/register', [UserController::class,'register'])->name('registration');
 Route::post('/register', [UserController::class,'handleRegistration'])->name('registration');
+Route::get('/login', [UserController::class,'login'])->name('login');
+Route::post('/login', [UserController::class,'handleLogin'])->name('login');
 
 
 Route::get('accueil', [ArticleController::class,'index'])->name('accueil');
@@ -36,3 +39,4 @@ Route::prefix('articles')->group(function (){
     Route::delete('/{article}/delete', [ArticleController::class,'delete'])->name('articles.delete');
 });
 
+Route::get('dashboard', [UserController::class, 'dashboard']);
