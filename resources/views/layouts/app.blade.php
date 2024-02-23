@@ -29,7 +29,7 @@
                         <a class="nav-link" href="">Mes propres articles</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link " href="">Mon Compte</a>
+                        <a class="nav-link " href="{{ route('registration') }}">Mon Compte</a>
                       </li>
                     </ul>
                     <form class="d-flex" role="search">
