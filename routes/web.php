@@ -22,21 +22,27 @@ Route::get('/', function () {
 });
 
 
-Route::get('/register', [UserController::class,'register'])->name('registration');
-Route::post('/register', [UserController::class,'handleRegistration'])->name('registration');
-Route::get('/login', [UserController::class,'login'])->name('login');
-Route::post('/login', [UserController::class,'handleLogin'])->name('login');
+Route::get('/register', [UserController::class, 'register'])->name('registration');
+Route::post('/register', [UserController::class, 'handleRegistration'])->name('registration');
+Route::get('/login', [UserController::class, 'login'])->name('login');
+Route::post('/login', [UserController::class, 'handleLogin'])->name('login');
 
 
-Route::get('accueil', [ArticleController::class,'index'])->name('accueil');
-// utilisation des préfixes
+Route::get('accueil', [ArticleController::class, 'index'])->name('accueil');
 
-Route::prefix('articles')->group(function (){
-    Route::post('/', [ArticleController::class,'store'])->name('articles');
-    Route::get('/{id}', [ArticleController::class,'show'])->name('articles.show');
-    Route::get('/{article}/edit', [ArticleController::class,'edit'])->name('articles.edit');;
-    Route::put('/{article}/update', [ArticleController::class,'update'])->name('articles.update');
-    Route::delete('/{article}/delete', [ArticleController::class,'delete'])->name('articles.delete');
+
+// si l'utilisateur n'est pas authentifié,
+//il ne peut pas avoir accès aux pages suivantes
+
+Route::middleware(['auth'])->group(function () {
+    // utilisation des préfixes
+    Route::prefix('articles')->group(function () {
+        Route::post('/', [ArticleController::class, 'store'])->name('articles');
+        Route::get('/{id}', [ArticleController::class, 'show'])->name('articles.show');
+        Route::get('/{article}/edit', [ArticleController::class, 'edit'])->name('articles.edit');;
+        Route::put('/{article}/update', [ArticleController::class, 'update'])->name('articles.update');
+        Route::delete('/{article}/delete', [ArticleController::class, 'delete'])->name('articles.delete');
+    });
+
+    Route::get('dashboard', [UserController::class, 'dashboard']);
 });
-
-Route::get('dashboard', [UserController::class, 'dashboard']);
