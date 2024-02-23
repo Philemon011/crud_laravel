@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('accueil', [ArticleController::class,'index']);
+Route::get('accueil', [ArticleController::class,'index'])->name('accueil');
 // utilisation des préfixes
 
 Route::prefix('articles')->group(function (){
