@@ -23,7 +23,7 @@ class createUserRequest extends FormRequest
     {
         return [
             'nom' => 'required|min:3',
-            'email' => 'required|email',
+            'email' => 'required|unique:users|email',
             'password' => 'required|min:5'
         ];
     }
@@ -34,6 +34,7 @@ class createUserRequest extends FormRequest
             'nom.required' => 'Le champ nom est requis',
             'nom.min' => 'Le nom doit comporter au moin 3 caractères',
             'email.required' => 'Le champ email est requis',
+            'email.unique' => 'Cette adresse Email est déjà lié à un compte',
             'password.required' => 'Le champ mot de passe est requis',
             'password.min' => 'Le mot de passe doit comporter au moin 5 caractères',
         ];
